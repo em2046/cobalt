@@ -8,6 +8,8 @@ class App extends Component {
     return (
       <div className="App">
         <Button type="default" />
+        <Button type="primary" />
+        <Button type="warning" />
       </div>
     );
   }

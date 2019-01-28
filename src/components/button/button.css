@@ -1,6 +1,91 @@
+:root {
+  --white: #fff;
+  --light-gray: #ccc;
+  --dark-gray: #333;
+  --primary: #1897f2;
+  --primary-hover: #4db4ff;
+  --primary-active: #1587d9;
+  --warning: #f2a918;
+  --warning-hover: #ffc34d;
+  --warning-active: #d99715;
+}
+
 .cobalt-button {
-  border: 1px solid #333;
-  background-color: #fff;
-  height: 30px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--dark-gray);
+  border: 1px solid var(--light-gray);
+  background-color: var(--white);
+  line-height: 20px;
+  padding: 4px 6px;
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cobalt-button-default:hover,
+.cobalt-button-default:focus {
+  border-color: var(--primary-hover);
+  color: var(--primary-hover);
+}
+
+.cobalt-button-default:focus {
+  outline: none;
+}
+
+.cobalt-button-default:active {
+  border-color: var(--primary-active);
+  color: var(--primary-active);
+}
+
+.cobalt-button-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+.cobalt-button-primary:hover,
+.cobalt-button-primary:focus {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.cobalt-button-primary:focus {
+  outline: none;
+}
+
+.cobalt-button-primary:active {
+  background-color: var(--primary-active);
+  border-color: var(--primary-active);
+}
+
+.cobalt-button-warning {
+  background-color: var(--warning);
+  border-color: var(--warning);
+  color: var(--white);
+}
+
+.cobalt-button-warning:hover,
+.cobalt-button-warning:focus {
+  background-color: var(--warning-hover);
+  border-color: var(--warning-hover);
+}
+
+.cobalt-button-warning:focus {
+  outline: none;
+}
+
+.cobalt-button-warning:active {
+  background-color: var(--warning-active);
+  border-color: var(--warning-active);
+}
+
+.cobalt-button-disabled,
+.cobalt-button-disabled:hover,
+.cobalt-button-disabled:focus,
+.cobalt-button-disabled:active {
+  background-color: var(--light-gray);
+  border-color: var(--light-gray);
+  color: var(--white);
+  cursor: not-allowed;
 }

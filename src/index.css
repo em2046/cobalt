@@ -12,3 +12,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.cobalt-button + .cobalt-button {
+  margin-left: 10px;
+}
