@@ -2,26 +2,49 @@ import './button.less';
 import ClassNameBuild from '../../utils/class-name-builder';
 import * as React from 'react';
 
-type buttonType = 'default' | 'primary' | 'warning' | 'danger';
+export type ButtonHtmlType = 'button' | 'submit' | 'reset';
+export type ButtonType = 'default' | 'primary' | 'warning' | 'danger';
+export type ButtonSize = 'large' | 'small' | 'default';
 
 export interface Props {
-  type?: buttonType;
+  type?: ButtonType;
   loading?: boolean;
-  disabled?: boolean;
-  size?: string;
+  size?: ButtonSize;
   children?: any;
   onClick?: any;
 }
 
-export default function Button(props: Props) {
-  const prefixClass = 'cobalt-button';
-  const { type, loading, onClick, ...rest } = props;
+export type NormalButtonProps = React.ButtonHTMLAttributes<
+  HTMLButtonElement
+> & { htmlType?: ButtonHtmlType } & Props;
+export type LinkButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href?: string;
+} & Props;
+export type ButtonProps = NormalButtonProps | LinkButtonProps;
 
+export default function Button(props: ButtonProps) {
+  const prefixClass = 'cobalt-button';
+  const { size, type, loading, onClick, ...rest } = props;
+
+  let sizeClass = getSize();
   let classNameBuild = new ClassNameBuild(prefixClass, {
     [`${prefixClass}-default`]: !type,
     [`${prefixClass}-${type}`]: type,
-    [`${prefixClass}-loading`]: loading
+    [`${prefixClass}-loading`]: loading,
+    [`${prefixClass}-${sizeClass}`]: sizeClass
   });
+
+  function getSize() {
+    switch (size) {
+      case 'large':
+        return 'large';
+      case 'small':
+        return 'small';
+      default:
+        break;
+    }
+    return null;
+  }
 
   function handleClick(e: any) {
     if (loading) {
@@ -33,11 +56,29 @@ export default function Button(props: Props) {
   }
 
   let children = props.children ? props.children : 'Button';
-
   let className = classNameBuild.toString();
 
+  const linkButtonProps = rest as LinkButtonProps;
+  if (linkButtonProps.href !== undefined) {
+    return (
+      <a className={className} onClick={handleClick} {...linkButtonProps}>
+        {children}
+        {loading ? '...' : ''}
+      </a>
+    );
+  }
+
+  const {
+    htmlType = 'button',
+    ...otherNormalButtonProps
+  } = rest as NormalButtonProps;
   return (
-    <button className={className} onClick={handleClick} {...rest}>
+    <button
+      className={className}
+      type={htmlType}
+      onClick={handleClick}
+      {...otherNormalButtonProps}
+    >
       {children}
       {loading ? '...' : ''}
     </button>
