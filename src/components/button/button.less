@@ -1,6 +1,8 @@
 @import "../../styles/constants";
 
 @button: @{prefixClass}-button;
+@lighter: 20%;
+@darker: 5%;
 
 .@{button} {
   border: 1px solid @light-gray;
@@ -14,42 +16,84 @@
 }
 
 .button-generator(@type, @text-color, @bg-color) {
+  @bg-color-hover: lighten(@bg-color, @lighter);
+  @bg-color-active: darken(@bg-color, @darker);
+
   .@{button}-@{type} {
     color: @text-color;
     border-color: @bg-color;
     background-color: @bg-color;
 
+    &:focus {
+      outline: none;
+    }
+
     &:hover,
     &:focus {
+      background-color: @bg-color-hover;
+      border-color: @bg-color-hover;
+    }
+
+    &:active {
+      background-color: @bg-color-active;
+      border-color: @bg-color-active;
     }
   }
 }
 
-.button-border-generator(@type, @text-color, @bg-color,  @border-color) {
-  .@{button}-@{type} {
-    color: @text-color;
-    border-color: @border-color;
-    background-color: @bg-color;
+.@{button}-default {
+  color: #000;
+  background-color: @white;
+  border-color: @light-gray;
 
-    &:hover,
-    &:focus {
-    }
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:focus {
+    color: lighten(@primary, @lighter);
+    border-color: lighten(@primary, @lighter);
+  }
+
+  &:active {
+    color: darken(@primary, @darker);
+    border-color: darken(@primary, @darker);
   }
 }
 
-.button-border-generator(default, @dark-gray, @white, @dark-gray);
+.@{button}-danger {
+  color: @danger;
+  background-color: @white;
+  border-color: @light-gray;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:focus {
+    color: @white;
+    background-color: lighten(@danger, @lighter);
+    border-color: lighten(@danger, @lighter);
+  }
+
+  &:active {
+    background-color: darken(@danger, @darker);
+    border-color: darken(@danger, @darker);
+  }
+}
+
 .button-generator(primary, @white, @primary);
 .button-generator(warning, @white, @warning);
-.button-border-generator(danger, @danger, @white, @dark-gray);
 
-.@{button}-disabled,
-.@{button}-disabled:hover,
-.@{button}-disabled:focus,
-.@{button}-disabled:active {
-  background-color: @light-gray;
-  border-color: @light-gray;
-  color: @white;
-  cursor: not-allowed;
+.@{button} {
+  &[disabled] {
+    background-color: @light-gray;
+    border-color: @light-gray;
+    color: @white;
+    cursor: not-allowed;
+  }
 }
 
 .@{button}-loading {
