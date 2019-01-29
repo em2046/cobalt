@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './App.less';
+import '../App.less';
 
-import Button from './components/button/Button';
+import Button from '../components/button/Button';
 
 function handleClick(e: any) {
   console.log(e);
 }
 
-class App extends Component {
+class ButtonDemo extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="Demo">
         <h1>Button</h1>
         <p>Just normal button</p>
         <h2>Example</h2>
@@ -100,4 +100,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ButtonDemo;

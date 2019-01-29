@@ -10,17 +10,18 @@ export interface Props {
   type?: ButtonType;
   loading?: boolean;
   size?: ButtonSize;
-  children?: any;
-  onClick?: any;
+  children?: React.ReactNode;
 }
 
-export type NormalButtonProps = React.ButtonHTMLAttributes<
-  HTMLButtonElement
-> & { htmlType?: ButtonHtmlType } & Props;
-export type LinkButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  href?: string;
+export type NormalProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  htmlType?: ButtonHtmlType;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 } & Props;
-export type ButtonProps = NormalButtonProps | LinkButtonProps;
+export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+} & Props;
+export type ButtonProps = NormalProps | LinkProps;
 
 export default function Button(props: ButtonProps) {
   const prefixClass = 'cobalt-button';
@@ -51,6 +52,7 @@ export default function Button(props: ButtonProps) {
       return;
     }
     if (onClick) {
+      // @ts-ignore
       onClick(e);
     }
   }
@@ -58,7 +60,7 @@ export default function Button(props: ButtonProps) {
   let children = props.children ? props.children : 'Button';
   let className = classNameBuild.toString();
 
-  const linkButtonProps = rest as LinkButtonProps;
+  const linkButtonProps = rest as LinkProps;
   if (linkButtonProps.href !== undefined) {
     return (
       <a className={className} onClick={handleClick} {...linkButtonProps}>
@@ -71,7 +73,7 @@ export default function Button(props: ButtonProps) {
   const {
     htmlType = 'button',
     ...otherNormalButtonProps
-  } = rest as NormalButtonProps;
+  } = rest as NormalProps;
   return (
     <button
       className={className}
