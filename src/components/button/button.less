@@ -1,0 +1,57 @@
+@import "../../styles/constants";
+
+@button: @{prefixClass}-button;
+
+.@{button} {
+  border: 1px solid @light-gray;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 4px 6px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-generator(@type, @text-color, @bg-color) {
+  .@{button}-@{type} {
+    color: @text-color;
+    border-color: @bg-color;
+    background-color: @bg-color;
+
+    &:hover,
+    &:focus {
+    }
+  }
+}
+
+.button-border-generator(@type, @text-color, @bg-color,  @border-color) {
+  .@{button}-@{type} {
+    color: @text-color;
+    border-color: @border-color;
+    background-color: @bg-color;
+
+    &:hover,
+    &:focus {
+    }
+  }
+}
+
+.button-border-generator(default, @dark-gray, @white, @dark-gray);
+.button-generator(primary, @white, @primary);
+.button-generator(warning, @white, @warning);
+.button-border-generator(danger, @danger, @white, @dark-gray);
+
+.@{button}-disabled,
+.@{button}-disabled:hover,
+.@{button}-disabled:focus,
+.@{button}-disabled:active {
+  background-color: @light-gray;
+  border-color: @light-gray;
+  color: @white;
+  cursor: not-allowed;
+}
+
+.@{button}-loading {
+  opacity: 0.5;
+}

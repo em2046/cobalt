@@ -1,40 +1,40 @@
-import './button.css';
+import './button.less';
+import ClassNameBuild from '../../utils/class-name-builder';
 import React, { useState } from 'react';
 
+type buttonType = 'default' | 'primary' | 'warning' | 'danger';
+
 interface Props {
-  type?: string;
+  type?: buttonType;
+  loading?: boolean;
+  disabled?: boolean;
+  size?: string;
   children?: any;
 }
 
 function Button(props: Props) {
-  const type = props.type;
-  const [loading, setLoading] = useState(false);
-  const [disabled, setDisabled] = useState(false);
+  const prefixClass = 'cobalt-button';
+  const { type, loading, disabled } = props;
+
+  let classNameBuild = new ClassNameBuild(prefixClass, {
+    [`${prefixClass}-default`]: !type,
+    [`${prefixClass}-${type}`]: type,
+    [`${prefixClass}-loading`]: loading,
+    [`${prefixClass}-disabled`]: disabled
+  });
 
   function handleClick() {
-    setLoading(!loading);
-    setDisabled(!disabled);
-  }
-
-  let classNameList = [];
-  classNameList.push('cobalt-button');
-
-  if (type !== '') {
-    classNameList.push('cobalt-button-' + type);
-  }
-  if (loading) {
-    classNameList.push('cobalt-button-loading');
-  }
-  if (disabled) {
-    classNameList.push('cobalt-button-disabled');
+    console.log('click');
   }
 
   let children = props.children ? props.children : 'Button';
 
+  let className = classNameBuild.toString();
+
   return (
-    <button className={classNameList.join(' ')} onClick={handleClick}>
-      {loading ? 'loading...' : ''}
+    <button className={className} onClick={handleClick}>
       {children}
+      {loading ? '...' : ''}
     </button>
   );
 }
