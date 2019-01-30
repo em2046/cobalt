@@ -31,10 +31,14 @@
   @bg-color-hover: darken(@bg-color, @little);
   @bg-color-active: darken(@bg-color, @more);
 
-  .@{button}-@{type} {
+  .normal() {
     color: @text-color;
     border-color: @bg-color;
     background-color: @bg-color;
+  }
+
+  .@{button}-@{type} {
+    .normal();
 
     &:focus {
       outline: none;
@@ -50,13 +54,25 @@
       background-color: @bg-color-active;
       border-color: @bg-color-active;
     }
+
+    &.@{button}-loading {
+      .normal();
+
+      &:focus {
+        border-color: @bg-color-hover;
+      }
+    }
   }
 }
 
 .@{button}-default {
-  color: @dark-gray;
-  background-color: @white;
-  border-color: @light-gray;
+  .normal() {
+    color: @dark-gray;
+    background-color: @white;
+    border-color: @light-gray;
+  }
+
+  .normal();
 
   &:focus {
     outline: none;
@@ -72,12 +88,24 @@
     color: darken(@primary, @more);
     border-color: darken(@primary, @more);
   }
+
+  &.@{button}-loading {
+    .normal();
+
+    &:focus {
+      color: @primary;
+      border-color: @primary;
+    }
+  }
 }
 
 .@{button}-danger {
-  color: @danger;
-  background-color: @white;
-  border-color: @light-gray;
+  .normal() {
+    color: @danger;
+    background-color: @white;
+    border-color: @light-gray;
+  }
+  .normal();
 
   &:focus {
     outline: none;
@@ -93,6 +121,14 @@
   &:active {
     background-color: @danger;
     border-color: @danger;
+  }
+
+  &.@{button}-loading {
+    .normal();
+
+    &:focus {
+      border-color: lighten(@danger, @little);
+    }
   }
 }
 

@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders {0}, 0, {false} 1`] = `
+<button
+  className="cobalt-button cobalt-button-default"
+  onClick={[Function]}
+>
+  0
+</button>
+`;
+
+exports[`Button renders {0}, 0, {false} 2`] = `
+<button
+  className="cobalt-button cobalt-button-default"
+  onClick={[Function]}
+>
+  0
+</button>
+`;
+
+exports[`Button renders {0}, 0, {false} 3`] = `
+<button
+  className="cobalt-button cobalt-button-default"
+  onClick={[Function]}
+/>
+`;
+
+exports[`Button renders disabled 1`] = `
+<button
+  className="cobalt-button cobalt-button-default"
+  disabled={false}
+  onClick={[Function]}
+>
+  Button
+</button>
+`;
+
+exports[`Button renders disabled 2`] = `
+<button
+  className="cobalt-button cobalt-button-default"
+  disabled={true}
+  onClick={[Function]}
+>
+  Button
+</button>
+`;
+
+exports[`Button renders disabled 3`] = `
+<button
+  className="cobalt-button cobalt-button-default"
+  disabled={true}
+  onClick={[Function]}
+>
+  Button
+</button>
+`;
+
+exports[`Button renders loading 1`] = `
+<button
+  className="cobalt-button cobalt-button-default"
+  onClick={[Function]}
+>
+  Button
+</button>
+`;
+
+exports[`Button renders loading 2`] = `
+<button
+  className="cobalt-button cobalt-button-default cobalt-button-loading"
+  onClick={[Function]}
+>
+  Button
+  ...
+</button>
+`;
+
+exports[`Button renders without crashing 1`] = `
+<button
+  className="cobalt-button cobalt-button-default"
+  onClick={[Function]}
+>
+  Button
+</button>
+`;

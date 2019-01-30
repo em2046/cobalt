@@ -69,14 +69,14 @@ export default function Button(props: ButtonProps) {
   );
   let classes = classNameBuilder.toString();
 
-  let handleClick: React.MouseEventHandler<HTMLButtonElement> = e => {
+  function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (disabled || loading) {
       return;
     }
     if (onClick) {
       onClick(e);
     }
-  };
+  }
 
   return (
     <button
