@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.less';
+import './main.less';
 import AppRouter from './AppRouter';
 import * as serviceWorker from './serviceWorker';
-
-import './styles/common.less';
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'));
 

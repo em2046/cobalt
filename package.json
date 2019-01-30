@@ -60,6 +60,9 @@
     "react-router-dom": "^4.4.0-beta.6",
     "react-test-renderer": "^16.8.0-alpha.1",
     "resolve": "1.8.1",
+    "rollup": "^1.1.2",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-typescript": "^1.0.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
     "terser-webpack-plugin": "1.1.0",
@@ -79,7 +82,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "style": "lessc src/main.less dist/cobalt.css",
+    "package": "rollup -c"
   },
   "eslintConfig": {
     "extends": "react-app"

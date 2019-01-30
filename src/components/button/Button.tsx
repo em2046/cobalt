@@ -1,4 +1,3 @@
-import './button.less';
 import ClassNameBuilder from '../../utils/class-name-builder';
 import * as React from 'react';
 
