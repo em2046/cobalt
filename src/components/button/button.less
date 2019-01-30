@@ -1,29 +1,31 @@
 @import "../../styles/constants";
 
-@button: @{prefixClass}-button;
-@lighter: 20%;
-@darker: 5%;
+@button: @{prefix-class}-button;
 
 .@{button} {
-  border: 1px solid @light-gray;
+  border: @border-size solid @light-gray;
   box-sizing: border-box;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 4px 12px;
+  font-size: @normal-font-size;
+  line-height: @line-height;
+  padding: (@normal-height - @border-size * 2 - @line-height)/2 12px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  min-height: @normal-height;
+  transition: all @transition-time;
 }
 
 .@{button}-large {
-  padding: 9px 16px;
-  font-size: 16px;
+  padding: (@large-height - @border-size * 2 - @line-height)/2 16px;
+  font-size: @large-font-size;
+  min-height: @large-height;
 }
 
 .@{button}-small {
-  font-size: 12px;
-  padding: 1px 8px;
+  font-size: @small-font-size;
+  padding: (@small-height - @border-size * 2 - @line-height)/2 8px;
+  min-height: @small-height;
 }
 
 .button-generator(@type, @text-color, @bg-color) {
@@ -53,7 +55,7 @@
 }
 
 .@{button}-default {
-  color: #000;
+  color: @dark;
   background-color: @white;
   border-color: @light-gray;
 

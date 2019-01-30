@@ -1,12 +1,12 @@
 export default class ClassNameBuild {
   private classNameSet: Set<string>;
 
-  constructor(...x: (string | string[] | object)[]) {
+  constructor(...x: (string | string[] | object | undefined)[]) {
     this.classNameSet = new Set();
     this.add(...x);
   }
 
-  public add(...x: (string | string[] | object)[]): void {
+  public add(...x: (string | string[] | object | undefined)[]): void {
     x.forEach(item => {
       if (Array.isArray(item)) {
         this.addClassNameList(item);
@@ -37,8 +37,10 @@ export default class ClassNameBuild {
     });
   }
 
-  private addClassName(className: string): void {
-    this.classNameSet.add(className);
+  private addClassName(className?: string): void {
+    if (className) {
+      this.classNameSet.add(className);
+    }
   }
 
   public toString() {

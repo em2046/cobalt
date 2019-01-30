@@ -1,88 +1,93 @@
 import './button.less';
-import ClassNameBuild from '../../utils/class-name-builder';
+import ClassNameBuilder from '../../utils/class-name-builder';
 import * as React from 'react';
 
+export type ButtonType = 'default' | 'primary' | 'danger';
 export type ButtonHtmlType = 'button' | 'submit' | 'reset';
-export type ButtonType = 'default' | 'primary' | 'warning' | 'danger';
 export type ButtonSize = 'large' | 'small' | 'default';
 
-export interface Props {
-  type?: ButtonType;
-  loading?: boolean;
-  size?: ButtonSize;
+export interface CustomButtonProps {
+  className?: string;
   children?: React.ReactNode;
-}
-
-export type NormalProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  type?: ButtonType;
+  size?: ButtonSize;
+  disabled?: boolean;
+  loading?: boolean;
   htmlType?: ButtonHtmlType;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-} & Props;
-export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  href?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-} & Props;
-export type ButtonProps = NormalProps | LinkProps;
+}
+
+type NativeButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+export type ButtonProps = NativeButtonProps & CustomButtonProps;
+
+function getSizeClass(size?: ButtonSize) {
+  switch (size) {
+    case 'large':
+      return 'large';
+    case 'small':
+      return 'small';
+    default:
+      return null;
+  }
+}
+
+function getTypeClass(type?: ButtonType) {
+  switch (type) {
+    case 'primary':
+      return 'primary';
+    case 'danger':
+      return 'danger';
+    default:
+      return 'default';
+  }
+}
 
 export default function Button(props: ButtonProps) {
   const prefixClass = 'cobalt-button';
-  const { size, type, loading, onClick, ...rest } = props;
+  const {
+    className,
+    children,
+    type,
+    size,
+    disabled,
+    loading,
+    htmlType,
+    onClick,
+    ...rest
+  } = props;
 
-  let sizeClass = getSize();
-  let classNameBuild = new ClassNameBuild(prefixClass, {
-    [`${prefixClass}-default`]: !type,
-    [`${prefixClass}-${type}`]: type,
-    [`${prefixClass}-loading`]: loading,
-    [`${prefixClass}-${sizeClass}`]: sizeClass
-  });
-
-  function getSize() {
-    switch (size) {
-      case 'large':
-        return 'large';
-      case 'small':
-        return 'small';
-      default:
-        break;
+  let sizeClass = getSizeClass(size);
+  let typeClass = getTypeClass(type);
+  let classNameBuilder = new ClassNameBuilder(
+    prefixClass,
+    className,
+    `${prefixClass}-${typeClass}`,
+    {
+      [`${prefixClass}-${sizeClass}`]: size,
+      [`${prefixClass}-loading`]: loading
     }
-    return null;
-  }
+  );
+  let classes = classNameBuilder.toString();
 
-  function handleClick(e: any) {
-    if (loading) {
+  let handleClick: React.MouseEventHandler<HTMLButtonElement> = e => {
+    if (disabled || loading) {
       return;
     }
     if (onClick) {
-      // @ts-ignore
       onClick(e);
     }
-  }
+  };
 
-  let children = props.children ? props.children : 'Button';
-  let className = classNameBuild.toString();
-
-  const linkButtonProps = rest as LinkProps;
-  if (linkButtonProps.href !== undefined) {
-    return (
-      <a className={className} onClick={handleClick} {...linkButtonProps}>
-        {children}
-        {loading ? '...' : ''}
-      </a>
-    );
-  }
-
-  const {
-    htmlType = 'button',
-    ...otherNormalButtonProps
-  } = rest as NormalProps;
   return (
     <button
-      className={className}
+      className={classes}
       type={htmlType}
+      disabled={disabled}
       onClick={handleClick}
-      {...otherNormalButtonProps}
+      {...rest}
     >
       {children}
-      {loading ? '...' : ''}
+      {loading ? '...' : null}
     </button>
   );
 }
