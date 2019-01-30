@@ -3,11 +3,6 @@ import '../App.less';
 
 import Button from '../components/button/Button';
 
-let handleClick: React.MouseEventHandler<HTMLButtonElement> = e => {
-  e.persist();
-  console.log(e);
-};
-
 class ButtonDemo extends Component {
   render() {
     return (
@@ -18,71 +13,57 @@ class ButtonDemo extends Component {
         <h3>Size</h3>
         <h4>Small</h4>
         <section>
-          <Button size="small" type="primary" onClick={handleClick}>
+          <Button size="small" type="primary">
             Primary
           </Button>
-          <Button size="small" onClick={handleClick}>
-            Default
-          </Button>
-          <Button size="small" type="danger" onClick={handleClick}>
+          <Button size="small">Default</Button>
+          <Button size="small" type="danger">
             Danger
           </Button>
         </section>
         <h4>Normal</h4>
         <section>
-          <Button type="primary" onClick={handleClick}>
-            Primary
-          </Button>
-          <Button onClick={handleClick}>Default</Button>
-          <Button type="danger" onClick={handleClick}>
-            Danger
-          </Button>
+          <Button type="primary">Primary</Button>
+          <Button>Default</Button>
+          <Button type="danger">Danger</Button>
         </section>
         <h4>Large</h4>
         <section>
-          <Button size="large" type="primary" onClick={handleClick}>
+          <Button size="large" type="primary">
             Primary
           </Button>
-          <Button size="large" onClick={handleClick}>
-            Default
-          </Button>
-          <Button size="large" type="danger" onClick={handleClick}>
+          <Button size="large">Default</Button>
+          <Button size="large" type="danger">
             Danger
           </Button>
         </section>
         <h3>Loading</h3>
         <section>
-          <Button type="primary" loading={true} onClick={handleClick}>
+          <Button type="primary" loading={true}>
             Primary
           </Button>
-          <Button loading={true} onClick={handleClick}>
-            Default
-          </Button>
-          <Button type="danger" loading={true} onClick={handleClick}>
+          <Button loading={true}>Default</Button>
+          <Button type="danger" loading={true}>
             Danger
           </Button>
         </section>
         <h3>Disabled</h3>
         <section>
-          <Button type="primary" disabled onClick={handleClick}>
+          <Button type="primary" disabled>
             Primary
           </Button>
-          <Button disabled onClick={handleClick}>
-            Default
-          </Button>
-          <Button type="danger" disabled onClick={handleClick}>
+          <Button disabled>Default</Button>
+          <Button type="danger" disabled>
             Danger
           </Button>
         </section>
         <h3>HTML Type</h3>
         <section>
-          <Button htmlType="button" onClick={handleClick}>
-            Button
-          </Button>
-          <Button type="primary" htmlType="submit" onClick={handleClick}>
+          <Button htmlType="button">Button</Button>
+          <Button type="primary" htmlType="submit">
             Submit
           </Button>
-          <Button type="danger" htmlType="reset" onClick={handleClick}>
+          <Button type="danger" htmlType="reset">
             Reset
           </Button>
         </section>
