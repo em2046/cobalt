@@ -1,0 +1,62 @@
+@import '../../styles/constants';
+
+@modal: ~'@{prefix-class}-modal';
+
+.@{modal} {
+  color: #333;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.@{modal}-header {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.@{modal}-title {
+  font-size: 16px;
+}
+
+.@{modal}-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  border: none;
+  background-color: #fff;
+  font-size: 0;
+  padding: 0;
+
+  &:before {
+    line-height: 20px;
+    color: #666;
+    font-size: 20px;
+    content: 'x';
+    display: block;
+  }
+
+  &:hover:before {
+    color: #333;
+  }
+}
+
+.@{modal}-body {
+  font-size: 12px;
+  padding: 10px;
+}
+
+.@{modal}-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+
+  .@{prefix-class}-button {
+    margin: 0 10px 10px 0;
+  }
+}

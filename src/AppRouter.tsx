@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import ButtonDemo from './views/ButtonDemo';
+import ModalDemo from './views/ModalDemo';
 import Home from './views/Home';
 import About from './views/About';
 
@@ -22,6 +23,11 @@ const routes = [
     main: () => <ButtonDemo />
   },
   {
+    path: '/modal',
+    sidebar: () => <div>Modal</div>,
+    main: () => <ModalDemo />
+  },
+  {
     path: '/about',
     sidebar: () => <div>About</div>,
     main: () => <About />
@@ -39,6 +45,9 @@ function AppRouter() {
             </li>
             <li>
               <Link to="/button">Button</Link>
+            </li>
+            <li>
+              <Link to="/modal">Modal</Link>
             </li>
             <li>
               <Link to="/about">About</Link>

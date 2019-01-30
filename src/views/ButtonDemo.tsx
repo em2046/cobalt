@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import '../App.less';
 
 import Button from '../components/button/Button';
 
-class ButtonDemo extends Component {
+export default class ButtonDemo extends Component {
   render() {
     return (
       <div className="Demo">
@@ -71,5 +70,3 @@ class ButtonDemo extends Component {
     );
   }
 }
-
-export default ButtonDemo;

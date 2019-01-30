@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './App.less';
 import './main.less';
 import AppRouter from './AppRouter';
 import * as serviceWorker from './serviceWorker';
