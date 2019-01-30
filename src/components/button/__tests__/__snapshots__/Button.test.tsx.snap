@@ -74,6 +74,16 @@ exports[`Button renders loading 2`] = `
 </button>
 `;
 
+exports[`Button renders loading 3`] = `
+<button
+  className="cobalt-button cobalt-button-default cobalt-button-loading"
+  onClick={[Function]}
+>
+  Button
+  ...
+</button>
+`;
+
 exports[`Button renders without crashing 1`] = `
 <button
   className="cobalt-button cobalt-button-default"

@@ -21,6 +21,7 @@ describe('Button', () => {
     }
 
     const component = renderer.create(<LoadingButton />);
+
     let tree = component.toJSON();
     expect(tree).not.toBeNull();
     expect(tree).toMatchSnapshot();
@@ -28,7 +29,12 @@ describe('Button', () => {
     if (tree) {
       tree.props.onClick();
     }
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
 
+    if (tree) {
+      tree.props.onClick();
+    }
     tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -44,21 +50,18 @@ describe('Button', () => {
       );
     }
 
-    // disabled == false
     const component = renderer.create(<DisabledButton />);
+
     let tree = component.toJSON();
     expect(tree).not.toBeNull();
     expect(tree).toMatchSnapshot();
 
-    // disabled == true
     if (tree) {
       tree.props.onClick();
     }
-
     tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 
-    // disabled == true
     if (tree) {
       tree.props.onClick();
     }
