@@ -28,8 +28,8 @@
 }
 
 .button-generator(@type, @text-color, @bg-color) {
-  @bg-color-hover: lighten(@bg-color, @lighter);
-  @bg-color-active: darken(@bg-color, @darker);
+  @bg-color-hover: darken(@bg-color, @little);
+  @bg-color-active: darken(@bg-color, @more);
 
   .@{button}-@{type} {
     color: @text-color;
@@ -54,7 +54,7 @@
 }
 
 .@{button}-default {
-  color: @dark;
+  color: @dark-gray;
   background-color: @white;
   border-color: @light-gray;
 
@@ -64,13 +64,13 @@
 
   &:hover,
   &:focus {
-    color: lighten(@primary, @lighter);
-    border-color: lighten(@primary, @lighter);
+    color: @primary;
+    border-color: @primary;
   }
 
   &:active {
-    color: darken(@primary, @darker);
-    border-color: darken(@primary, @darker);
+    color: darken(@primary, @more);
+    border-color: darken(@primary, @more);
   }
 }
 
@@ -86,13 +86,13 @@
   &:hover,
   &:focus {
     color: @white;
-    background-color: lighten(@danger, @lighter);
-    border-color: lighten(@danger, @lighter);
+    background-color: lighten(@danger, @little);
+    border-color: lighten(@danger, @little);
   }
 
   &:active {
-    background-color: darken(@danger, @darker);
-    border-color: darken(@danger, @darker);
+    background-color: @danger;
+    border-color: @danger;
   }
 }
 
