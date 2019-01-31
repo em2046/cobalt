@@ -1,14 +1,37 @@
 @import '../../../styles/constants';
+@import '../../../styles/mixin';
+
 
 @modal: ~'@{prefix-class}-modal';
+@modal-gap: 10px;
+@modal-top-offset: 100px;
+@modal-width: 400px;
+
+.@{modal}-wrap,
+.@{modal}-mask {
+  .all-screen();
+}
+
+.@{modal}-wrap {
+  display: flex;
+  align-items: self-start;
+  justify-content: center;
+}
+
+.@{modal}-mask {
+  background-color: @dark-mask;
+}
 
 .@{modal} {
-  color: #333;
-  line-height: 20px;
+  position: relative;
+  background-color: @white;
+  color: @darker-gray;
+  line-height: @line-height;
   display: flex;
   flex-direction: column;
-  width: 400px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: @modal-width;
+  box-shadow: @box-shadow;
+  margin-top: @modal-top-offset;
 }
 
 .@{modal}-header {
@@ -17,8 +40,8 @@
 }
 
 .@{modal}-title {
-  font-size: 16px;
-  margin: 10px;
+  font-size: @large-font;
+  margin: @modal-gap;
   height: 20px;
   overflow: hidden;
 }
@@ -31,28 +54,31 @@
   height: 40px;
   background-color: #fff;
   color: @light-gray;
+
   .@{prefix-class}-icon {
-    font-size: 16px;
+    font-size: @large-font;
   }
-  &:hover{
+
+  &:hover {
     color: @darker-gray;
   }
-  &:active{
+
+  &:active {
     color: @dark;
   }
 }
 
 .@{modal}-body {
-  font-size: 12px;
-  padding: 10px;
+  font-size: @small-font;
+  padding: @modal-gap;
 }
 
 .@{modal}-footer {
   display: flex;
   justify-content: flex-end;
-  padding-top: 10px;
+  padding: @modal-gap / 2;
 
   .@{prefix-class}-button {
-    margin: 0 10px 10px 0;
+    margin: @modal-gap / 2;
   }
 }
