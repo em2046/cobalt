@@ -70,19 +70,19 @@ export default function Modal(props: ModalProps) {
       {maskNode}
       <div className={wrapClass} onClick={handleMaskClick}>
         <div className={classes} onClick={handleModalClick}>
-          <header className={headerClass}>
+          <div className={headerClass}>
             <div className={titleClass}>{title}</div>
             <div className={closeClass} onClick={handleCancel}>
               <Icon type="close" />
             </div>
-          </header>
-          <main className={bodyClass}>{children}</main>
-          <footer className={footerClass}>
+          </div>
+          <div className={bodyClass}>{children}</div>
+          <div className={footerClass}>
             <Button onClick={handleCancel}>Cancel</Button>
             <Button type="primary" onClick={handleOk}>
               OK
             </Button>
-          </footer>
+          </div>
         </div>
       </div>
     </div>
