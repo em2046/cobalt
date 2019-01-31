@@ -1,12 +1,14 @@
 import ClassNameBuilder from '../../utils/class-name-builder';
 import * as React from 'react';
 import Icon from '../icon/Icon';
+import { IconType } from '../icon/IconSheet';
 
 export type ButtonType = 'default' | 'primary' | 'danger';
 export type ButtonHtmlType = 'button' | 'submit' | 'reset';
 export type ButtonSize = 'large' | 'small' | 'default';
 
 export interface CustomButtonProps {
+  icon?: IconType;
   className?: string;
   children?: React.ReactNode;
   type?: ButtonType;
@@ -45,6 +47,7 @@ function getTypeClass(type?: ButtonType) {
 export default function Button(props: ButtonProps) {
   const prefixClass = 'cobalt-button';
   const {
+    icon,
     className,
     children,
     type,
@@ -56,15 +59,19 @@ export default function Button(props: ButtonProps) {
     ...rest
   } = props;
 
+  let iconType = loading ? 'loading' : icon;
+  let iconNode = iconType ? <Icon type={iconType} /> : null;
   let sizeClass = getSizeClass(size);
   let typeClass = getTypeClass(type);
+  let isIconOnly = iconNode && !children;
   let classNameBuilder = new ClassNameBuilder(
     prefixClass,
     className,
     `${prefixClass}-${typeClass}`,
     {
       [`${prefixClass}-${sizeClass}`]: size,
-      [`${prefixClass}-loading`]: loading
+      [`${prefixClass}-loading`]: loading,
+      [`${prefixClass}-icon-only`]: isIconOnly
     }
   );
   let classes = classNameBuilder.toString();
@@ -78,8 +85,6 @@ export default function Button(props: ButtonProps) {
     }
   }
 
-  let icon = loading ? <Icon type="loading" /> : null;
-
   return (
     <button
       className={classes}
@@ -88,7 +93,7 @@ export default function Button(props: ButtonProps) {
       onClick={handleClick}
       {...rest}
     >
-      {icon}
+      {iconNode}
       {children}
     </button>
   );

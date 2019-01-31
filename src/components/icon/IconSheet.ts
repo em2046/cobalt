@@ -14,4 +14,5 @@ let sheet: Sheet = {
   loading: SvgLoading
 };
 
+export type IconType = keyof Sheet;
 export default sheet;

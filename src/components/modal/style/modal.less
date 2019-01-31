@@ -24,18 +24,16 @@
 }
 
 .@{modal}-close {
-  line-height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
-  padding: 20px;
-  overflow: hidden;
-  border: none;
+  width: 40px;
+  height: 40px;
   background-color: #fff;
-  font-size: 0;
   color: @light-gray;
+  .@{prefix-class}-icon {
+    font-size: 16px;
+  }
   &:hover{
     color: @darker-gray;
   }

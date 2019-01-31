@@ -1,10 +1,26 @@
-@keyframes spin { from { transform: rotate(0) } to { transform: rotate(360deg) }  }
+@import url('../../../styles/constants');
 
-.cobalt-icon {
-  font-size: 20px;
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@icon: ~'@{prefix-class}-icon';
+
+.@{icon} {
   display: flex;
+
   svg {
     line-height: 1;
+  }
+}
+
+.@{icon}-spin {
+  svg {
     animation: spin 1s linear 0s infinite;
   }
 }

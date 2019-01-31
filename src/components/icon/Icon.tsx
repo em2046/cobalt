@@ -1,12 +1,12 @@
 import ClassNameBuilder from '../../utils/class-name-builder';
 import * as React from 'react';
-import IconSheet, { Sheet } from './IconSheet';
+import IconSheet, { IconType } from './IconSheet';
 
 interface Props {
-  type: keyof Sheet;
+  type: IconType;
 }
 
-function isSpin(type: keyof Sheet) {
+function isSpin(type: IconType) {
   return ['loading'].includes(type);
 }
 
@@ -21,7 +21,7 @@ export default function Icon(props: Props) {
   let Svg = IconSheet[props.type];
   return (
     <div className={classes}>
-      <Svg fill="currentColor" />
+      <Svg fill="currentColor" width="1em" height="1em" />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 @import '../../../styles/constants';
 
 @button: ~'@{prefix-class}-button';
+@icon: ~'@{prefix-class}-icon';
 
 .@{button} {
   border: @border-size solid @lighter-gray;
@@ -13,18 +14,38 @@
   text-decoration: none;
   min-height: @normal-height;
   transition: all @transition-time;
+
+  .@{icon} {
+    margin-right: 5px;
+  }
+
+  &.@{button}-icon-only {
+    width: 30px;
+
+    .@{icon} {
+      margin-right: 0;
+    }
+  }
 }
 
 .@{button}-large {
   padding: (@large-height - @border-size * 2 - @line-height)/2 16px;
   font-size: @large-font-size;
   min-height: @large-height;
+
+  &.@{button}-icon-only {
+    width: 40px;
+  }
 }
 
 .@{button}-small {
   font-size: @small-font-size;
   padding: (@small-height - @border-size * 2 - @line-height)/2 8px;
   min-height: @small-height;
+
+  &.@{button}-icon-only {
+    width: 24px;
+  }
 }
 
 .button-generator(@type, @text-color, @bg-color) {
