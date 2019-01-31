@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import ButtonDemo from './views/ButtonDemo';
 import ModalDemo from './views/ModalDemo';
+import IconDemo from './views/IconDemo';
 import Home from './views/Home';
 import About from './views/About';
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/button',
     sidebar: () => <div>Button</div>,
     main: () => <ButtonDemo />
+  },
+  {
+    path: '/icon',
+    sidebar: () => <div>Icon</div>,
+    main: () => <IconDemo />
   },
   {
     path: '/modal',

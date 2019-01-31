@@ -1,7 +1,7 @@
 import ClassNameBuilder from '../../utils/class-name-builder';
 import * as React from 'react';
 import Icon from '../icon/Icon';
-import { IconType } from '../icon/IconSheet';
+import { IconType } from '../icon/icon-sheet';
 
 export type ButtonType = 'default' | 'primary' | 'danger';
 export type ButtonHtmlType = 'button' | 'submit' | 'reset';
