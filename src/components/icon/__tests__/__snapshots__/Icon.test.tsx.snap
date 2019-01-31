@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon renders without crashing 1`] = `
+<div
+  className="cobalt-icon"
+>
+  <svg
+    fill="currentColor"
+    height="1em"
+    width="1em"
+  >
+    close.svg
+  </svg>
+</div>
+`;
