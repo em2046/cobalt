@@ -1,9 +1,9 @@
-@import '../../styles/constants';
+@import '../../../styles/constants';
 
 @button: ~'@{prefix-class}-button';
 
 .@{button} {
-  border: @border-size solid @light-gray;
+  border: @border-size solid @lighter-gray;
   font-size: @normal-font-size;
   line-height: @line-height;
   padding: (@normal-height - @border-size * 2 - @line-height)/2 12px;
@@ -67,9 +67,9 @@
 
 .@{button}-default {
   .normal() {
-    color: @dark-gray;
+    color: @darker-gray;
     background-color: @white;
-    border-color: @light-gray;
+    border-color: @lighter-gray;
   }
 
   .normal();
@@ -103,7 +103,7 @@
   .normal() {
     color: @danger;
     background-color: @white;
-    border-color: @light-gray;
+    border-color: @lighter-gray;
   }
   .normal();
 
@@ -137,8 +137,8 @@
 
 .@{button} {
   &[disabled] {
-    background-color: @light-gray;
-    border-color: @light-gray;
+    background-color: @lighter-gray;
+    border-color: @lighter-gray;
     color: @white;
     cursor: not-allowed;
   }

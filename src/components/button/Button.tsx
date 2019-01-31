@@ -1,5 +1,6 @@
 import ClassNameBuilder from '../../utils/class-name-builder';
 import * as React from 'react';
+import Icon from '../icon/Icon';
 
 export type ButtonType = 'default' | 'primary' | 'danger';
 export type ButtonHtmlType = 'button' | 'submit' | 'reset';
@@ -77,6 +78,8 @@ export default function Button(props: ButtonProps) {
     }
   }
 
+  let icon = loading ? <Icon type="loading" /> : null;
+
   return (
     <button
       className={classes}
@@ -85,8 +88,8 @@ export default function Button(props: ButtonProps) {
       onClick={handleClick}
       {...rest}
     >
+      {icon}
       {children}
-      {loading ? '...' : null}
     </button>
   );
 }

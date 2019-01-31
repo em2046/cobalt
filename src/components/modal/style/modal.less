@@ -1,4 +1,4 @@
-@import '../../styles/constants';
+@import '../../../styles/constants';
 
 @modal: ~'@{prefix-class}-modal';
 
@@ -13,36 +13,34 @@
 
 .@{modal}-header {
   display: flex;
-  padding: 10px;
   justify-content: space-between;
 }
 
 .@{modal}-title {
   font-size: 16px;
+  margin: 10px;
+  height: 20px;
+  overflow: hidden;
 }
 
 .@{modal}-close {
+  line-height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 20px;
   height: 20px;
+  padding: 20px;
   overflow: hidden;
   border: none;
   background-color: #fff;
   font-size: 0;
-  padding: 0;
-
-  &:before {
-    line-height: 20px;
-    color: #666;
-    font-size: 20px;
-    content: 'x';
-    display: block;
+  color: @light-gray;
+  &:hover{
+    color: @darker-gray;
   }
-
-  &:hover:before {
-    color: #333;
+  &:active{
+    color: @dark;
   }
 }
 
