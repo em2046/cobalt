@@ -22,35 +22,13 @@ export interface CustomButtonProps {
 type NativeButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 export type ButtonProps = NativeButtonProps & CustomButtonProps;
 
-function getSizeClass(size?: ButtonSize) {
-  switch (size) {
-    case 'large':
-      return 'large';
-    case 'small':
-      return 'small';
-    default:
-      return null;
-  }
-}
-
-function getTypeClass(type?: ButtonType) {
-  switch (type) {
-    case 'primary':
-      return 'primary';
-    case 'danger':
-      return 'danger';
-    default:
-      return 'default';
-  }
-}
-
 export default function Button(props: ButtonProps) {
   const prefixClass = 'cobalt-button';
   const {
     icon,
     className,
     children,
-    type,
+    type = 'default',
     size,
     disabled,
     loading,
@@ -61,15 +39,13 @@ export default function Button(props: ButtonProps) {
 
   let iconType = loading ? 'loading' : icon;
   let iconNode = iconType ? <Icon type={iconType} /> : null;
-  let sizeClass = getSizeClass(size);
-  let typeClass = getTypeClass(type);
   let isIconOnly = iconNode && !children;
   let classNameBuilder = new ClassNameBuilder(
     prefixClass,
     className,
-    `${prefixClass}-${typeClass}`,
+    `${prefixClass}-${type}`,
     {
-      [`${prefixClass}-${sizeClass}`]: size,
+      [`${prefixClass}-${size}`]: size,
       [`${prefixClass}-loading`]: loading,
       [`${prefixClass}-icon-only`]: isIconOnly
     }
