@@ -1,5 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript';
+import url from "rollup-plugin-url"
+import svgr from '@svgr/rollup'
 
 export default {
   input: './src/main.ts',
@@ -9,6 +11,8 @@ export default {
   },
   external: ['react'],
   plugins: [
+    url(),
+    svgr(),
     resolve(),
     typescript({
       jsx: 'react'
