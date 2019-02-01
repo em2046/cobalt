@@ -86,6 +86,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "style": "lessc src/main.less dist/cobalt.css",
+    "icon-generator": "node scripts/icon-generator.js",
     "package": "rollup -c"
   },
   "eslintConfig": {

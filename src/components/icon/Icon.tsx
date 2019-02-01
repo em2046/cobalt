@@ -1,6 +1,6 @@
 import ClassNameBuilder from '../../utils/class-name-builder';
 import * as React from 'react';
-import iconSheet, { IconType } from './icon-sheet';
+import { IconType, iconSheet } from './icon-sheet-generated';
 
 interface CustomIconProps {
   type: IconType;
