@@ -64,7 +64,7 @@ export let iconSheet: Sheet = {
 %SHEET_AREA%
 };
 
-export let iconList:IconType[] = [
+export let iconList: IconType[] = [
 %LIST_AREA%
 ];
 `;
@@ -90,7 +90,9 @@ async function iconGenerator() {
     console.error(e);
   }
 
-  fileList.forEach(file => {
+  fileList.sort((firstFile,secondFile)=>{
+    return firstFile.basename.localeCompare(secondFile.basename)
+  }).forEach(file => {
     let { basename, pascalCaseName, filename } = file;
 
     let importHasName = IMPORT_TEMPLATE.replace(

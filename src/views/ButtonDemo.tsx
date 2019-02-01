@@ -17,19 +17,19 @@ export default function ButtonDemo() {
           Primary
         </Button>
         <Button size="small">Default</Button>
-        <Button size="small" type="danger" icon="close">
+        <Button size="small" type="danger" icon="info-circle">
           Danger
         </Button>
-        <Button size="small" icon="close" />
+        <Button size="small" icon="info-circle" />
       </section>
       <h4>Normal</h4>
       <section>
         <Button type="primary">Primary</Button>
         <Button>Default</Button>
-        <Button type="danger" icon="close">
+        <Button type="danger" icon="info-circle">
           Danger
         </Button>
-        <Button icon="close" />
+        <Button icon="info-circle" />
       </section>
       <h4>Large</h4>
       <section>
@@ -37,10 +37,10 @@ export default function ButtonDemo() {
           Primary
         </Button>
         <Button size="large">Default</Button>
-        <Button size="large" type="danger" icon="close">
+        <Button size="large" type="danger" icon="info-circle">
           Danger
         </Button>
-        <Button size="large" icon="close" />
+        <Button size="large" icon="info-circle" />
       </section>
       <h3>Loading</h3>
       <section>
@@ -48,10 +48,10 @@ export default function ButtonDemo() {
           Primary
         </Button>
         <Button loading={loading}>Default</Button>
-        <Button type="danger" icon="close" loading={loading}>
+        <Button type="danger" icon="info-circle" loading={loading}>
           Danger
         </Button>
-        <Button icon="close" loading={loading} />
+        <Button icon="info-circle" loading={loading} />
         <Button
           onClick={() => setLoading(!loading)}
           type={!loading ? 'primary' : undefined}
@@ -78,6 +78,17 @@ export default function ButtonDemo() {
         <Button type="danger" htmlType="reset">
           Reset
         </Button>
+      </section>
+      <h4>Icon</h4>
+      <section>
+        <Button type="primary" icon="check-circle">
+          Primary
+        </Button>
+        <Button icon="exclamation-circle">Default</Button>
+        <Button type="danger" icon="close-circle">
+          Danger
+        </Button>
+        <Button icon="warning" />
       </section>
     </div>
   );
