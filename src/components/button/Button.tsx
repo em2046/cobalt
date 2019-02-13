@@ -1,6 +1,6 @@
 import ClassNameBuilder from '../../utils/class-name-builder';
 import * as React from 'react';
-import Icon from '../icon/Icon';
+import Icon from '../icon';
 import { IconType } from '../icon/icon-sheet-generated';
 
 export type ButtonType = 'default' | 'primary' | 'danger';

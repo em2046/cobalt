@@ -2,6 +2,7 @@
 @import '../../../styles/mixin';
 
 @modal: ~'@{prefix-class}-modal';
+@confirm: ~'@{modal}-confirm';
 @modal-gap: 10px;
 @modal-top-offset: 100px;
 @modal-width: 400px;
@@ -80,5 +81,19 @@
 
   .@{prefix-class}-button {
     margin: @modal-gap / 2;
+  }
+}
+
+.@{confirm} {
+  display: flex;
+  align-items: center;
+
+  &-icon {
+    font-size: 30px;
+    margin: 10px;
+  }
+
+  &-title {
+    font-weight: bold;
   }
 }

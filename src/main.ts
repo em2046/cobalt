@@ -1,5 +1,5 @@
-import Button from './components/button/Button';
-import Icon from './components/icon/Icon';
-import Modal from './components/modal/Modal';
+import Button from './components/button';
+import Icon from './components/icon';
+import Modal from './components/modal';
 
 export { Button, Icon, Modal };

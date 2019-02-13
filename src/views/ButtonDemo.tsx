@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Button from '../components/button/Button';
+import Button from '../components/button';
 
 export default function ButtonDemo() {
   let [loading, setLoading] = useState(true);

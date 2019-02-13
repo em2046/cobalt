@@ -1,21 +1,30 @@
 import ClassNameBuilder from '../../utils/class-name-builder';
 import * as React from 'react';
-import Button from '../button/Button';
-import Icon from '../icon/Icon';
+import * as ReactDOM from 'react-dom';
+import Button from '../button';
+import Icon from '../icon';
 
-export interface ModalProps {
+interface ModalBaseProps {
   title?: string;
   mask?: boolean;
-  children?: React.ReactNode;
-  visible?: boolean;
+  maskClosable?: boolean;
   onCancel?: React.MouseEventHandler;
   onOk?: React.MouseEventHandler;
-  maskClosable?: boolean;
 }
 
-export default function Modal(props: ModalProps) {
-  const prefixClass = 'cobalt-modal';
+export interface ModalProps extends ModalBaseProps {
+  children?: React.ReactNode;
+  visible?: boolean;
+  container?: HTMLElement;
+}
 
+export interface ModalFuncProps extends ModalBaseProps {
+  content?: React.ReactNode;
+}
+
+export const prefixClass = 'cobalt-modal';
+
+export default function Modal(props: ModalProps) {
   let {
     title,
     children,
@@ -23,7 +32,8 @@ export default function Modal(props: ModalProps) {
     visible,
     onCancel,
     onOk,
-    maskClosable = true
+    maskClosable = true,
+    container = document.body
   } = props;
 
   let classNameBuilder = new ClassNameBuilder(prefixClass);
@@ -65,26 +75,38 @@ export default function Modal(props: ModalProps) {
     }
   }
 
-  return (
+  let header = (
+    <div className={headerClass}>
+      <div className={titleClass}>{title}</div>
+      <div className={closeClass} onClick={handleCancel}>
+        <Icon type="close" />
+      </div>
+    </div>
+  );
+
+  let body = <div className={bodyClass}>{children}</div>;
+
+  let footer = (
+    <div className={footerClass}>
+      <Button onClick={handleCancel}>Cancel</Button>
+      <Button type="primary" onClick={handleOk}>
+        OK
+      </Button>
+    </div>
+  );
+
+  let dialog = (
     <div>
       {maskNode}
       <div className={wrapClass} onClick={handleMaskClick}>
         <div className={classes} onClick={handleModalClick}>
-          <div className={headerClass}>
-            <div className={titleClass}>{title}</div>
-            <div className={closeClass} onClick={handleCancel}>
-              <Icon type="close" />
-            </div>
-          </div>
-          <div className={bodyClass}>{children}</div>
-          <div className={footerClass}>
-            <Button onClick={handleCancel}>Cancel</Button>
-            <Button type="primary" onClick={handleOk}>
-              OK
-            </Button>
-          </div>
+          {header}
+          {body}
+          {footer}
         </div>
       </div>
     </div>
   );
+
+  return ReactDOM.createPortal(dialog, container);
 }
