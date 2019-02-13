@@ -9,7 +9,7 @@ export default {
     file: './dist/cobalt.esm.js',
     format: 'esm'
   },
-  external: ['react'],
+  external: ['react', 'react-dom'],
   plugins: [
     url(),
     svgr(),

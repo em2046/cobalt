@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal, { ModalFuncProps, prefixClass } from './Modal';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import Icon from '../icon';
 import { IconType } from '../icon/icon-sheet-generated';
 
