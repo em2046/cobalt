@@ -3,25 +3,30 @@ import Modal, { ModalFuncProps, prefixClass } from './Modal';
 import * as ReactDOM from 'react-dom';
 import Icon from '../icon';
 import { IconType } from '../icon/icon-sheet-generated';
+import ClassNameBuilder from '../../utils/class-name-builder';
+import Button from '../button';
 
-export type ConfirmType = 'info' | 'success' | 'error' | 'warning';
+export type ConfirmType = 'confirm' | 'info' | 'success' | 'error' | 'warning';
 
 export interface ConfirmModalProps extends ModalFuncProps {
   type: ConfirmType;
   close?: () => void;
+  okCancel: boolean;
 }
 
 function ConfirmModal(props: ConfirmModalProps) {
-  let { title, content, close, type } = props;
+  let { title, content, close, type, okCancel } = props;
 
   function typeToIcon(type: ConfirmType): IconType {
     switch (type) {
+      case 'confirm':
+        return 'help';
       case 'info':
         return 'info-circle';
       case 'success':
         return 'check-circle';
       case 'error':
-        return 'close-circle';
+        return 'error';
       case 'warning':
         return 'warning';
     }
@@ -30,23 +35,51 @@ function ConfirmModal(props: ConfirmModalProps) {
   const [visible, setVisible] = useState(true);
   let icon = typeToIcon(type);
   let confirmPrefixClass = `${prefixClass}-confirm`;
+  let confirmBoxClass = `${confirmPrefixClass}-box`;
   let confirmIconClass = `${confirmPrefixClass}-icon`;
   let confirmTitleClass = `${confirmPrefixClass}-title`;
   let confirmContentClass = `${confirmPrefixClass}-content`;
 
+  let classNameBuilder = new ClassNameBuilder(
+    confirmPrefixClass,
+    `${confirmPrefixClass}-${type}`
+  );
+  let classes = classNameBuilder.toString();
+
+  function handleOk() {
+    close && close();
+    setVisible(false);
+  }
+
+  function handleCancel() {
+    close && close();
+    setVisible(false);
+  }
+
+  let cancelButton = okCancel ? (
+    <Button onClick={handleCancel}>Cancel</Button>
+  ) : null;
+  let okButton = (
+    <Button type="primary" onClick={handleOk}>
+      Ok
+    </Button>
+  );
+
+  let footer = (
+    <React.Fragment>
+      {cancelButton}
+      {okButton}
+    </React.Fragment>
+  );
   return (
     <Modal
+      wrapClassName={classes}
+      closable={false}
       visible={visible}
-      onOk={() => {
-        close && close();
-        setVisible(false);
-      }}
-      onCancel={() => {
-        close && close();
-        setVisible(false);
-      }}
+      maskClosable={false}
+      footer={footer}
     >
-      <div className={confirmPrefixClass}>
+      <div className={confirmBoxClass}>
         <div className={confirmIconClass}>
           <Icon type={icon} />
         </div>

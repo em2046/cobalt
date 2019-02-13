@@ -47,6 +47,7 @@
 }
 
 .@{modal}-close {
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,6 +60,11 @@
     font-size: @large-font;
   }
 
+  &:focus {
+    outline: none;
+  }
+
+  &:focus,
   &:hover {
     color: @darker-gray;
   }
@@ -69,6 +75,7 @@
 }
 
 .@{modal}-body {
+  color: @dark-gray;
   font-size: @small-font;
   padding: @modal-gap;
 }
@@ -85,15 +92,38 @@
 }
 
 .@{confirm} {
+}
+
+.@{confirm}-box {
   display: flex;
   align-items: center;
+}
 
-  &-icon {
-    font-size: 30px;
-    margin: 10px;
-  }
+.@{confirm}-icon {
+  color: @primary;
+  font-size: 30px;
+  margin: 10px;
+}
 
-  &-title {
-    font-weight: bold;
+.@{confirm}-success {
+  .@{confirm}-icon {
+    color: @success;
   }
+}
+
+.@{confirm}-error {
+  .@{confirm}-icon {
+    color: @danger;
+  }
+}
+
+.@{confirm}-warning {
+  .@{confirm}-icon {
+    color: @warning;
+  }
+}
+
+.@{confirm}-title {
+  font-size: 16px;
+  color: @darker-gray;
 }

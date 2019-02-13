@@ -15,6 +15,14 @@ export default function ModalDemo() {
     setVisible(false);
   }
 
+  function handleConfirm() {
+    // @ts-ignore
+    Modal.confirm({
+      title: 'Do you want to DELETE these items?',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+    });
+  }
+
   function handleInfo() {
     // @ts-ignore
     Modal.info({
@@ -68,7 +76,13 @@ export default function ModalDemo() {
           reiciendis reprehenderit tempore voluptatibus!
         </Modal>
       </section>
-      <h3>Warning</h3>
+      <h3>Confirm</h3>
+      <section>
+        <Button icon="help" onClick={handleConfirm}>
+          Confirm
+        </Button>
+      </section>
+      <h3>Information</h3>
       <section>
         <Button icon="info-circle" onClick={handleInfo}>
           Info
@@ -76,7 +90,7 @@ export default function ModalDemo() {
         <Button icon="check-circle" onClick={handleSuccess}>
           Success
         </Button>
-        <Button icon="close-circle" onClick={handleError}>
+        <Button icon="error" onClick={handleError}>
           Error
         </Button>
         <Button icon="warning" onClick={handleWarning}>

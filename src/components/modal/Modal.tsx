@@ -16,6 +16,9 @@ export interface ModalProps extends ModalBaseProps {
   children?: React.ReactNode;
   visible?: boolean;
   container?: HTMLElement;
+  footer?: React.ReactNode;
+  closable?: boolean;
+  wrapClassName?: string;
 }
 
 export interface ModalFuncProps extends ModalBaseProps {
@@ -33,10 +36,13 @@ export default function Modal(props: ModalProps) {
     onCancel,
     onOk,
     maskClosable = true,
-    container = document.body
+    container = document.body,
+    footer,
+    wrapClassName,
+    closable = true
   } = props;
 
-  let classNameBuilder = new ClassNameBuilder(prefixClass);
+  let classNameBuilder = new ClassNameBuilder(prefixClass, wrapClassName);
   let classes = classNameBuilder.toString();
 
   let wrapClass = `${prefixClass}-wrap`;
@@ -46,6 +52,9 @@ export default function Modal(props: ModalProps) {
   let footerClass = `${prefixClass}-footer`;
   let titleClass = `${prefixClass}-title`;
   let closeClass = `${prefixClass}-close`;
+
+  let hasHeader = closable || title;
+  let footerIsNull = footer === null;
 
   let maskNode = mask ? <div className={maskClass} /> : null;
 
@@ -75,18 +84,22 @@ export default function Modal(props: ModalProps) {
     }
   }
 
-  let header = (
+  let modalClose = closable ? (
+    <button className={closeClass} onClick={handleCancel}>
+      <Icon type="close" />
+    </button>
+  ) : null;
+
+  let modalHeader = hasHeader ? (
     <div className={headerClass}>
       <div className={titleClass}>{title}</div>
-      <div className={closeClass} onClick={handleCancel}>
-        <Icon type="close" />
-      </div>
+      {modalClose}
     </div>
-  );
+  ) : null;
 
-  let body = <div className={bodyClass}>{children}</div>;
+  let modalBody = <div className={bodyClass}>{children}</div>;
 
-  let footer = (
+  let defaultFooter = (
     <div className={footerClass}>
       <Button onClick={handleCancel}>Cancel</Button>
       <Button type="primary" onClick={handleOk}>
@@ -95,14 +108,18 @@ export default function Modal(props: ModalProps) {
     </div>
   );
 
+  let customFooter = <div className={footerClass}>{footer}</div>;
+  let computedFooter = footer ? customFooter : defaultFooter;
+  let modalFooter = footerIsNull ? null : computedFooter;
+
   let dialog = (
     <div>
       {maskNode}
       <div className={wrapClass} onClick={handleMaskClick}>
         <div className={classes} onClick={handleModalClick}>
-          {header}
-          {body}
-          {footer}
+          {modalHeader}
+          {modalBody}
+          {modalFooter}
         </div>
       </div>
     </div>
