@@ -78,7 +78,7 @@ export default function ModalDemo() {
       </section>
       <h3>Confirm</h3>
       <section>
-        <Button icon="help" onClick={handleConfirm}>
+        <Button icon="confirm" onClick={handleConfirm}>
           Confirm
         </Button>
       </section>

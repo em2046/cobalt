@@ -20,7 +20,7 @@ function ConfirmModal(props: ConfirmModalProps) {
   function typeToIcon(type: ConfirmType): IconType {
     switch (type) {
       case 'confirm':
-        return 'help';
+        return 'confirm';
       case 'info':
         return 'info-circle';
       case 'success':
