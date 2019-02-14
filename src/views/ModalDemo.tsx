@@ -6,25 +6,39 @@ export default function ModalDemo() {
   let [visible, setVisible] = useState(false);
 
   function handleOk(e: React.MouseEvent) {
-    console.log(e);
+    console.log('ok', e);
     setVisible(false);
   }
 
   function handleCancel(e: React.MouseEvent) {
-    console.log(e);
+    console.log('cancel', e);
     setVisible(false);
   }
 
   function handleConfirm() {
-    // @ts-ignore
     Modal.confirm({
       title: 'Do you want to DELETE these items?',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+      content: (
+        <div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      ),
+      onOk(e: React.MouseEvent) {
+        console.log('ok', e);
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve();
+          }, 1000);
+        });
+      },
+      onCancel(e: React.MouseEvent) {
+        console.log('cancel', e);
+      }
     });
   }
 
   function handleInfo() {
-    // @ts-ignore
     Modal.info({
       title: 'This is a info message',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
@@ -32,7 +46,6 @@ export default function ModalDemo() {
   }
 
   function handleSuccess() {
-    // @ts-ignore
     Modal.success({
       title: 'This is a Success message',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
@@ -40,7 +53,6 @@ export default function ModalDemo() {
   }
 
   function handleError() {
-    // @ts-ignore
     Modal.error({
       title: 'This is a error message',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
@@ -48,7 +60,6 @@ export default function ModalDemo() {
   }
 
   function handleWarning() {
-    // @ts-ignore
     Modal.warning({
       title: 'This is a warning message',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'

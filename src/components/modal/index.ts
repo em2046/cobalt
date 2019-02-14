@@ -1,8 +1,21 @@
-import Modal, { ModalFuncProps } from './Modal';
-import confirm, { ConfirmModalProps } from './confirm';
+import Modal, { ModalFuncProps, ModalProps } from './Modal';
+import { ConfirmModalProps } from './confirm';
+import confirm from './confirm';
+import * as React from 'react';
 
-// @ts-ignore
-Modal.confirm = function(props: ModalFuncProps) {
+interface ModalExtendedType {
+  (props: ModalProps): React.ReactPortal | null;
+
+  confirm: (props: ModalFuncProps) => void;
+  info: (props: ModalFuncProps) => void;
+  success: (props: ModalFuncProps) => void;
+  error: (props: ModalFuncProps) => void;
+  warning: (props: ModalFuncProps) => void;
+}
+
+let ModalExtended = Modal as ModalExtendedType;
+
+ModalExtended.confirm = function(props: ModalFuncProps) {
   let config: ConfirmModalProps = {
     type: 'confirm',
     okCancel: true,
@@ -11,8 +24,7 @@ Modal.confirm = function(props: ModalFuncProps) {
   return confirm(config);
 };
 
-// @ts-ignore
-Modal.info = function(props: ModalFuncProps) {
+ModalExtended.info = function(props: ModalFuncProps) {
   let config: ConfirmModalProps = {
     type: 'info',
     okCancel: false,
@@ -21,8 +33,7 @@ Modal.info = function(props: ModalFuncProps) {
   return confirm(config);
 };
 
-// @ts-ignore
-Modal.success = function(props: ModalFuncProps) {
+ModalExtended.success = function(props: ModalFuncProps) {
   let config: ConfirmModalProps = {
     type: 'success',
     okCancel: false,
@@ -31,8 +42,7 @@ Modal.success = function(props: ModalFuncProps) {
   return confirm(config);
 };
 
-// @ts-ignore
-Modal.error = function(props: ModalFuncProps) {
+ModalExtended.error = function(props: ModalFuncProps) {
   let config: ConfirmModalProps = {
     type: 'error',
     okCancel: false,
@@ -41,8 +51,7 @@ Modal.error = function(props: ModalFuncProps) {
   return confirm(config);
 };
 
-// @ts-ignore
-Modal.warning = function(props: ModalFuncProps) {
+ModalExtended.warning = function(props: ModalFuncProps) {
   let config: ConfirmModalProps = {
     type: 'warning',
     okCancel: false,
@@ -51,4 +60,4 @@ Modal.warning = function(props: ModalFuncProps) {
   return confirm(config);
 };
 
-export default Modal;
+export default ModalExtended;

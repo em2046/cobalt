@@ -12,10 +12,12 @@ export interface ConfirmModalProps extends ModalFuncProps {
   type: ConfirmType;
   close?: () => void;
   okCancel: boolean;
+  onOk?: (...args: any[]) => any | PromiseLike<any>;
+  onCancel?: (...args: any[]) => any | PromiseLike<any>;
 }
 
 function ConfirmModal(props: ConfirmModalProps) {
-  let { title, content, close, type, okCancel } = props;
+  let { title, content, close, type, okCancel, onOk, onCancel } = props;
 
   function typeToIcon(type: ConfirmType): IconType {
     switch (type) {
@@ -33,6 +35,9 @@ function ConfirmModal(props: ConfirmModalProps) {
   }
 
   const [visible, setVisible] = useState(true);
+  const [okLoading, setOkLoading] = useState(false);
+  const [cancelLoading, setCancelLoading] = useState(false);
+
   let icon = typeToIcon(type);
   let confirmPrefixClass = `${prefixClass}-confirm`;
   let confirmBoxClass = `${confirmPrefixClass}-box`;
@@ -46,24 +51,63 @@ function ConfirmModal(props: ConfirmModalProps) {
   );
   let classes = classNameBuilder.toString();
 
-  function handleOk() {
+  function hide() {
     close && close();
     setVisible(false);
   }
 
-  function handleCancel() {
-    close && close();
-    setVisible(false);
+  function handleOk(e: React.MouseEvent) {
+    if (onOk) {
+      let okRet = onOk(e);
+      if (okRet && okRet.then) {
+        setOkLoading(true);
+        okRet.then(
+          () => {
+            hide();
+          },
+          () => {
+            setOkLoading(false);
+          }
+        );
+      } else {
+        hide();
+      }
+    } else {
+      hide();
+    }
   }
 
-  let cancelButton = okCancel ? (
-    <Button onClick={handleCancel}>Cancel</Button>
-  ) : null;
+  function handleCancel(e: React.MouseEvent) {
+    if (onCancel) {
+      let cancelRet = onCancel(e);
+      if (cancelRet && cancelRet.then) {
+        setCancelLoading(true);
+        cancelRet.then(
+          () => {
+            hide();
+          },
+          () => {
+            setCancelLoading(false);
+          }
+        );
+      } else {
+        hide();
+      }
+    } else {
+      hide();
+    }
+  }
+
   let okButton = (
-    <Button type="primary" onClick={handleOk}>
+    <Button loading={okLoading} type="primary" onClick={handleOk}>
       Ok
     </Button>
   );
+  let cancelButton = okCancel ? (
+    <Button loading={cancelLoading} onClick={handleCancel}>
+      Cancel
+    </Button>
+  ) : null;
 
   let footer = (
     <React.Fragment>
