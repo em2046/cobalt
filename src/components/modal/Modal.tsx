@@ -15,7 +15,7 @@ interface ModalBaseProps {
 export interface ModalProps extends ModalBaseProps {
   children?: React.ReactNode;
   visible?: boolean;
-  container?: HTMLElement;
+  getContainer?: () => HTMLElement | undefined;
   footer?: React.ReactNode;
   closable?: boolean;
   wrapClassName?: string;
@@ -36,7 +36,7 @@ export default function Modal(props: ModalProps) {
     onCancel,
     onOk,
     maskClosable = true,
-    container = document.body,
+    getContainer = () => document.body,
     footer,
     wrapClassName,
     closable = true
@@ -125,5 +125,6 @@ export default function Modal(props: ModalProps) {
     </div>
   );
 
+  let container = getContainer() || document.body;
   return ReactDOM.createPortal(dialog, container);
 }
