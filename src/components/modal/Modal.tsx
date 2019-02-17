@@ -27,7 +27,11 @@ export interface ModalFuncProps extends ModalBaseProps {
 
 export const prefixClass = 'cobalt-modal';
 
+let dialogCounter = 1;
+
 export default function Modal(props: ModalProps) {
+  dialogCounter++;
+
   let {
     title,
     children,
@@ -55,6 +59,9 @@ export default function Modal(props: ModalProps) {
 
   let hasHeader = closable || title;
   let footerIsNull = footer === null;
+
+  let labelledby = hasHeader ? `dialog${dialogCounter}Title` : undefined;
+  let describedby = `dialog${dialogCounter}Desc`;
 
   let maskNode = mask ? <div className={maskClass} /> : null;
 
@@ -92,12 +99,18 @@ export default function Modal(props: ModalProps) {
 
   let modalHeader = hasHeader ? (
     <div className={headerClass}>
-      <div className={titleClass}>{title}</div>
+      <div id={labelledby} className={titleClass}>
+        {title}
+      </div>
       {modalClose}
     </div>
   ) : null;
 
-  let modalBody = <div className={bodyClass}>{children}</div>;
+  let modalBody = (
+    <div id={describedby} className={bodyClass}>
+      {children}
+    </div>
+  );
 
   let defaultFooter = (
     <div className={footerClass}>
@@ -115,7 +128,13 @@ export default function Modal(props: ModalProps) {
   let dialog = (
     <div>
       {maskNode}
-      <div className={wrapClass} onClick={handleMaskClick}>
+      <div
+        role="dialog"
+        aria-labelledby={labelledby}
+        aria-describedby={describedby}
+        className={wrapClass}
+        onClick={handleMaskClick}
+      >
         <div className={classes} onClick={handleModalClick}>
           {modalHeader}
           {modalBody}
