@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import Modal, { ModalProps } from '../Modal';
 
 jest.mock('react-dom', () => ({
-  createPortal: (node: React.ReactNode) => node
+  createPortal: (node: any) => node
 }));
 
 interface State {
