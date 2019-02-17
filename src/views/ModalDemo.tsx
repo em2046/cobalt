@@ -1,67 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '../components/modal';
 import Button from '../components/button';
-import { ModalProps } from '../components/modal/Modal';
-
-interface State {
-  visible: boolean;
-}
-
-class ModalTester extends React.Component<ModalProps, State> {
-  constructor(props: ModalProps) {
-    super(props);
-    this.state = {
-      visible: false
-    };
-  }
-
-  container?: HTMLElement;
-
-  handleOk = () => {
-    this.setState({
-      visible: false
-    });
-  };
-
-  handleCancel = () => {
-    this.setState({
-      visible: false
-    });
-  };
-
-  handleClick = () => {
-    this.setState({
-      visible: true
-    });
-  };
-
-  saveContainer = (container: HTMLDivElement) => {
-    this.container = container;
-  };
-
-  getContainer = () => {
-    return this.container;
-  };
-
-  render(): React.ReactNode {
-    const { visible } = this.state;
-    return (
-      <div>
-        <div ref={this.saveContainer} />
-        <Button onClick={this.handleClick}>Open</Button>
-        <Modal
-          visible={visible}
-          getContainer={this.getContainer}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          title="Title"
-        >
-          Here is content of Modal
-        </Modal>
-      </div>
-    );
-  }
-}
 
 export default function ModalDemo() {
   let [visible, setVisible] = useState(false);
@@ -87,7 +26,7 @@ export default function ModalDemo() {
       ),
       onOk(e: React.MouseEvent) {
         console.log('ok', e);
-        return new Promise((resolve, reject) => {
+        return new Promise(resolve => {
           setTimeout(() => {
             resolve();
           }, 1000);
@@ -147,10 +86,6 @@ export default function ModalDemo() {
           explicabo facilis, ipsam laboriosam non pariatur quas, qui quia quo
           reiciendis reprehenderit tempore voluptatibus!
         </Modal>
-      </section>
-      <h3>getContainer</h3>
-      <section>
-        <ModalTester />
       </section>
       <h3>Confirm</h3>
       <section>

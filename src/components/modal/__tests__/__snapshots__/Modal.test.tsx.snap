@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders without crashing 1`] = `
+<div>
+  <div />
+  <div>
+    <div
+      className="cobalt-modal-mask"
+    />
+    <div
+      className="cobalt-modal-wrap"
+      onClick={[Function]}
+    >
+      <div
+        className="cobalt-modal"
+        onClick={[Function]}
+      >
+        <div
+          className="cobalt-modal-header"
+        >
+          <div
+            className="cobalt-modal-title"
+          />
+          <button
+            className="cobalt-modal-close"
+            onClick={[Function]}
+          >
+            <div
+              className="cobalt-icon"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 20 20"
+                width="1em"
+              >
+                close.svg
+              </svg>
+            </div>
+          </button>
+        </div>
+        <div
+          className="cobalt-modal-body"
+        >
+          Here is content of Modal
+        </div>
+        <div
+          className="cobalt-modal-footer"
+        >
+          <button
+            className="cobalt-button cobalt-button-default"
+            onClick={[Function]}
+          >
+            Cancel
+          </button>
+          <button
+            className="cobalt-button cobalt-button-primary"
+            onClick={[Function]}
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders without footer 1`] = `
+<div>
+  <div />
+  <div>
+    <div
+      className="cobalt-modal-mask"
+    />
+    <div
+      className="cobalt-modal-wrap"
+      onClick={[Function]}
+    >
+      <div
+        className="cobalt-modal"
+        onClick={[Function]}
+      >
+        <div
+          className="cobalt-modal-header"
+        >
+          <div
+            className="cobalt-modal-title"
+          />
+          <button
+            className="cobalt-modal-close"
+            onClick={[Function]}
+          >
+            <div
+              className="cobalt-icon"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 20 20"
+                width="1em"
+              >
+                close.svg
+              </svg>
+            </div>
+          </button>
+        </div>
+        <div
+          className="cobalt-modal-body"
+        >
+          Here is content of Modal
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
