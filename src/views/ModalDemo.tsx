@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Modal from '../components/modal';
-import Button from '../components/button';
+import { Modal, Button } from 'cobalt';
 
 export default function ModalDemo() {
   let [visible, setVisible] = useState(false);

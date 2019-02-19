@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from '../components/icon';
-import { iconList } from '../components/icon/icon-sheet-generated';
+import { Icon } from 'cobalt';
+import { iconList } from '@components/icon/icon-sheet-generated';
 
 export default function ModalDemo() {
   return (

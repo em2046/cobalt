@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import Button from '../components/button';
+import { Button } from 'cobalt';
+import Basic from '@components/button/demo/Basic';
 
 export default function ButtonDemo() {
   let [loading, setLoading] = useState(true);
@@ -10,6 +11,8 @@ export default function ButtonDemo() {
       <h1>Button</h1>
       <p>Just like a normal button</p>
       <h2>Example</h2>
+      <h3>Basic</h3>
+      <Basic />
       <h3>Size</h3>
       <h4>Small</h4>
       <section>
