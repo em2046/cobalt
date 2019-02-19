@@ -7,26 +7,26 @@
 
 import { SVGProps, FunctionComponent } from 'react';
 
-import { ReactComponent as SVGRCaretDown } from '../../assets/icon/caret-down.svg';
-import { ReactComponent as SVGRCaretLeft } from '../../assets/icon/caret-left.svg';
-import { ReactComponent as SVGRCaretRight } from '../../assets/icon/caret-right.svg';
-import { ReactComponent as SVGRCaretUp } from '../../assets/icon/caret-up.svg';
-import { ReactComponent as SVGRCheck } from '../../assets/icon/check.svg';
-import { ReactComponent as SVGRCheckCircle } from '../../assets/icon/check-circle.svg';
-import { ReactComponent as SVGRClose } from '../../assets/icon/close.svg';
-import { ReactComponent as SVGRCloseCircle } from '../../assets/icon/close-circle.svg';
-import { ReactComponent as SVGRConfirm } from '../../assets/icon/confirm.svg';
-import { ReactComponent as SVGRError } from '../../assets/icon/error.svg';
-import { ReactComponent as SVGRExclamation } from '../../assets/icon/exclamation.svg';
-import { ReactComponent as SVGRExclamationCircle } from '../../assets/icon/exclamation-circle.svg';
-import { ReactComponent as SVGRInfo } from '../../assets/icon/info.svg';
-import { ReactComponent as SVGRInfoCircle } from '../../assets/icon/info-circle.svg';
-import { ReactComponent as SVGRLoading } from '../../assets/icon/loading.svg';
-import { ReactComponent as SVGRMinus } from '../../assets/icon/minus.svg';
-import { ReactComponent as SVGRPlus } from '../../assets/icon/plus.svg';
-import { ReactComponent as SVGRQuestion } from '../../assets/icon/question.svg';
-import { ReactComponent as SVGRQuestionCircle } from '../../assets/icon/question-circle.svg';
-import { ReactComponent as SVGRWarning } from '../../assets/icon/warning.svg';
+import { ReactComponent as SVGRCaretDown } from '../../assets/icon/directional/caret-down.svg';
+import { ReactComponent as SVGRCaretLeft } from '../../assets/icon/directional/caret-left.svg';
+import { ReactComponent as SVGRCaretRight } from '../../assets/icon/directional/caret-right.svg';
+import { ReactComponent as SVGRCaretUp } from '../../assets/icon/directional/caret-up.svg';
+import { ReactComponent as SVGRCheck } from '../../assets/icon/suggested/check.svg';
+import { ReactComponent as SVGRCheckCircle } from '../../assets/icon/suggested/check-circle.svg';
+import { ReactComponent as SVGRClose } from '../../assets/icon/suggested/close.svg';
+import { ReactComponent as SVGRCloseCircle } from '../../assets/icon/suggested/close-circle.svg';
+import { ReactComponent as SVGRConfirm } from '../../assets/icon/suggested/confirm.svg';
+import { ReactComponent as SVGRError } from '../../assets/icon/suggested/error.svg';
+import { ReactComponent as SVGRExclamation } from '../../assets/icon/suggested/exclamation.svg';
+import { ReactComponent as SVGRExclamationCircle } from '../../assets/icon/suggested/exclamation-circle.svg';
+import { ReactComponent as SVGRInfo } from '../../assets/icon/suggested/info.svg';
+import { ReactComponent as SVGRInfoCircle } from '../../assets/icon/suggested/info-circle.svg';
+import { ReactComponent as SVGRLoading } from '../../assets/icon/suggested/loading.svg';
+import { ReactComponent as SVGRMinus } from '../../assets/icon/suggested/minus.svg';
+import { ReactComponent as SVGRPlus } from '../../assets/icon/suggested/plus.svg';
+import { ReactComponent as SVGRQuestion } from '../../assets/icon/suggested/question.svg';
+import { ReactComponent as SVGRQuestionCircle } from '../../assets/icon/suggested/question-circle.svg';
+import { ReactComponent as SVGRWarning } from '../../assets/icon/suggested/warning.svg';
 
 type SVGR = FunctionComponent<SVGProps<SVGSVGElement>>;
 
