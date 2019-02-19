@@ -8,8 +8,11 @@ exports[`Modal renders without crashing 1`] = `
       className="cobalt-modal-mask"
     />
     <div
+      aria-describedby="dialog2Desc"
+      aria-labelledby="dialog2Title"
       className="cobalt-modal-wrap"
       onClick={[Function]}
+      role="dialog"
     >
       <div
         className="cobalt-modal"
@@ -20,6 +23,7 @@ exports[`Modal renders without crashing 1`] = `
         >
           <div
             className="cobalt-modal-title"
+            id="dialog2Title"
           />
           <button
             className="cobalt-modal-close"
@@ -41,6 +45,7 @@ exports[`Modal renders without crashing 1`] = `
         </div>
         <div
           className="cobalt-modal-body"
+          id="dialog2Desc"
         >
           Here is content of Modal
         </div>
@@ -74,8 +79,11 @@ exports[`Modal renders without footer 1`] = `
       className="cobalt-modal-mask"
     />
     <div
+      aria-describedby="dialog2Desc"
+      aria-labelledby="dialog2Title"
       className="cobalt-modal-wrap"
       onClick={[Function]}
+      role="dialog"
     >
       <div
         className="cobalt-modal"
@@ -86,6 +94,7 @@ exports[`Modal renders without footer 1`] = `
         >
           <div
             className="cobalt-modal-title"
+            id="dialog2Title"
           />
           <button
             className="cobalt-modal-close"
@@ -107,6 +116,7 @@ exports[`Modal renders without footer 1`] = `
         </div>
         <div
           className="cobalt-modal-body"
+          id="dialog2Desc"
         >
           Here is content of Modal
         </div>
