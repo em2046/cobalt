@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Icon from '@components/icon';
 
 class Home extends Component {
   render() {
@@ -11,6 +12,14 @@ class Home extends Component {
           <Link className="App-link" to="/button">
             Learn More
           </Link>
+          <a
+            className="App-link"
+            target="_blank"
+            href="https://github.com/em2046/cobalt"
+          >
+            <Icon type="github" />
+            GitHub
+          </a>
         </header>
       </div>
     );

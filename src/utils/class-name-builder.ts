@@ -1,4 +1,4 @@
-export default class ClassNameBuild {
+export default class ClassNameBuilder {
   private classNameSet: Set<string>;
 
   constructor(...x: (string | string[] | object | undefined)[]) {
