@@ -24,7 +24,7 @@ export default function Icon(props: IconProps) {
   let SVG = iconSheet[props.type];
   return (
     <span className={classes}>
-      <SVG fill="currentColor" width="1em" height="1em" viewBox="0 0 20 20" />
+      <SVG fill="currentColor" width="1em" height="1em" viewBox="0 0 32 32" />
     </span>
   );
 }
