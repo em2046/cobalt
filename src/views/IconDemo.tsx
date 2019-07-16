@@ -1,6 +1,6 @@
-import React from 'react';
-import { Icon } from 'cobalt';
-import { iconList } from '@components/icon/icon-list-generated';
+import React from 'react'
+import { Icon } from 'cobalt'
+import { iconList } from '@components/icon/icon-list-generated'
 
 export default function ModalDemo() {
   return (
@@ -21,12 +21,12 @@ export default function ModalDemo() {
                       <Icon type={item} />
                       <span className="text">{item}</span>
                     </li>
-                  );
+                  )
                 })}
               </ul>
             </div>
           </React.Fragment>
-        );
+        )
       })}
       <h2>* Legal</h2>
       <section>
@@ -39,5 +39,5 @@ export default function ModalDemo() {
         </a>
       </section>
     </div>
-  );
+  )
 }

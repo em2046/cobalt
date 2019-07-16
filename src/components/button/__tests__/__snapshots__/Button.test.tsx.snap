@@ -69,18 +69,18 @@ exports[`Button renders loading 2`] = `
   className="cobalt-button cobalt-button-default cobalt-button-loading"
   onClick={[Function]}
 >
-  <div
+  <span
     className="cobalt-icon cobalt-icon-spin"
   >
     <svg
       fill="currentColor"
       height="1em"
-      viewBox="0 0 20 20"
+      viewBox="0 0 32 32"
       width="1em"
     >
       loading.svg
     </svg>
-  </div>
+  </span>
   Button
 </button>
 `;
@@ -90,18 +90,18 @@ exports[`Button renders loading 3`] = `
   className="cobalt-button cobalt-button-default cobalt-button-loading"
   onClick={[Function]}
 >
-  <div
+  <span
     className="cobalt-icon cobalt-icon-spin"
   >
     <svg
       fill="currentColor"
       height="1em"
-      viewBox="0 0 20 20"
+      viewBox="0 0 32 32"
       width="1em"
     >
       loading.svg
     </svg>
-  </div>
+  </span>
   Button
 </button>
 `;

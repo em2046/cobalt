@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Modal, Button } from 'cobalt';
+import React, { useState } from 'react'
+import { Modal, Button } from 'cobalt'
 
 export default function ModalDemo() {
-  let [visible, setVisible] = useState(false);
+  let [visible, setVisible] = useState(false)
 
   function handleOk(e: React.MouseEvent) {
-    console.log('ok', e);
-    setVisible(false);
+    console.log('ok', e)
+    setVisible(false)
   }
 
   function handleCancel(e: React.MouseEvent) {
-    console.log('cancel', e);
-    setVisible(false);
+    console.log('cancel', e)
+    setVisible(false)
   }
 
   function handleConfirm() {
@@ -24,45 +24,45 @@ export default function ModalDemo() {
         </div>
       ),
       onOk(e: React.MouseEvent) {
-        console.log('ok', e);
+        console.log('ok', e)
         return new Promise(resolve => {
           setTimeout(() => {
-            resolve();
-          }, 1000);
-        });
+            resolve()
+          }, 1000)
+        })
       },
       onCancel(e: React.MouseEvent) {
-        console.log('cancel', e);
+        console.log('cancel', e)
       }
-    });
+    })
   }
 
   function handleInfo() {
     Modal.info({
       title: 'This is a info message',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-    });
+    })
   }
 
   function handleSuccess() {
     Modal.success({
       title: 'This is a Success message',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-    });
+    })
   }
 
   function handleError() {
     Modal.error({
       title: 'This is a error message',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-    });
+    })
   }
 
   function handleWarning() {
     Modal.warning({
       title: 'This is a warning message',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-    });
+    })
   }
 
   return (
@@ -108,5 +108,5 @@ export default function ModalDemo() {
         </Button>
       </section>
     </div>
-  );
+  )
 }

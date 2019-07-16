@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import { Button } from 'cobalt';
-import Basic from '@components/button/demo/Basic';
+import { Button } from 'cobalt'
+import Basic from '@components/button/demo/Basic'
 
 export default function ButtonDemo() {
-  let [loading, setLoading] = useState(true);
+  let [loading, setLoading] = useState(true)
 
   return (
     <div className="Demo">
@@ -94,5 +94,5 @@ export default function ButtonDemo() {
         <Button icon="warning" />
       </section>
     </div>
-  );
+  )
 }

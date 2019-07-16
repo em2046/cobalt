@@ -1,11 +1,11 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 
-import ButtonDemo from './views/ButtonDemo';
-import ModalDemo from './views/ModalDemo';
-import IconDemo from './views/IconDemo';
-import Home from './views/Home';
-import About from './views/About';
+import ButtonDemo from './views/ButtonDemo'
+import ModalDemo from './views/ModalDemo'
+import IconDemo from './views/IconDemo'
+import Home from './views/Home'
+import About from './views/About'
 
 const routes = [
   {
@@ -34,7 +34,7 @@ const routes = [
     sidebar: () => <div>About</div>,
     main: () => <About />
   }
-];
+]
 
 function AppRouter() {
   return (
@@ -53,7 +53,7 @@ function AppRouter() {
                     <route.sidebar />
                   </NavLink>
                 </li>
-              );
+              )
             })}
           </ul>
         </div>
@@ -70,7 +70,7 @@ function AppRouter() {
         </div>
       </div>
     </Router>
-  );
+  )
 }
 
-export default AppRouter;
+export default AppRouter

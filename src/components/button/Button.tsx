@@ -1,29 +1,29 @@
-import ClassNameBuilder from '../../utils/class-name-builder';
-import * as React from 'react';
-import Icon from '../icon';
-import { IconType } from '../icon/icon-sheet-generated';
+import ClassNameBuilder from '../../utils/class-name-builder'
+import * as React from 'react'
+import Icon from '../icon'
+import { IconType } from '../icon/icon-sheet-generated'
 
-export type ButtonType = 'default' | 'primary' | 'danger';
-export type ButtonHtmlType = 'button' | 'submit' | 'reset';
-export type ButtonSize = 'large' | 'small' | 'default';
+export type ButtonType = 'default' | 'primary' | 'danger'
+export type ButtonHtmlType = 'button' | 'submit' | 'reset'
+export type ButtonSize = 'large' | 'small' | 'default'
 
 export interface CustomButtonProps {
-  icon?: IconType;
-  className?: string;
-  children?: React.ReactNode;
-  type?: ButtonType;
-  size?: ButtonSize;
-  disabled?: boolean;
-  loading?: boolean;
-  htmlType?: ButtonHtmlType;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  icon?: IconType
+  className?: string
+  children?: React.ReactNode
+  type?: ButtonType
+  size?: ButtonSize
+  disabled?: boolean
+  loading?: boolean
+  htmlType?: ButtonHtmlType
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-type NativeButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
-export type ButtonProps = NativeButtonProps & CustomButtonProps;
+type NativeButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
+export type ButtonProps = NativeButtonProps & CustomButtonProps
 
 export default function Button(props: ButtonProps) {
-  const prefixClass = 'cobalt-button';
+  const prefixClass = 'cobalt-button'
   const {
     icon,
     className,
@@ -35,11 +35,11 @@ export default function Button(props: ButtonProps) {
     htmlType,
     onClick,
     ...rest
-  } = props;
+  } = props
 
-  let iconType = loading ? 'loading' : icon;
-  let iconNode = iconType ? <Icon type={iconType} /> : null;
-  let isIconOnly = iconNode && !children;
+  let iconType = loading ? 'loading' : icon
+  let iconNode = iconType ? <Icon type={iconType} /> : null
+  let isIconOnly = iconNode && !children
   let classNameBuilder = new ClassNameBuilder(
     prefixClass,
     className,
@@ -49,15 +49,15 @@ export default function Button(props: ButtonProps) {
       [`${prefixClass}-loading`]: loading,
       [`${prefixClass}-icon-only`]: isIconOnly
     }
-  );
-  let classes = classNameBuilder.toString();
+  )
+  let classes = classNameBuilder.toString()
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (disabled || loading) {
-      return;
+      return
     }
     if (onClick) {
-      onClick(e);
+      onClick(e)
     }
   }
 
@@ -72,5 +72,5 @@ export default function Button(props: ButtonProps) {
       {iconNode}
       {children}
     </button>
-  );
+  )
 }

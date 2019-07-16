@@ -1,9 +1,9 @@
-import React from 'react';
-import * as ReactDOM from 'react-dom';
-import Home from './views/Home';
+import React from 'react'
+import * as ReactDOM from 'react-dom'
+import Home from './views/Home'
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Home />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+  const div = document.createElement('div')
+  ReactDOM.render(<Home />, div)
+  ReactDOM.unmountComponentAtNode(div)
+})

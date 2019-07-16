@@ -1,45 +1,46 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Modal, { ModalProps } from '../Modal';
+import React from 'react'
+import renderer from 'react-test-renderer'
+import Modal, { ModalProps } from '../Modal'
 
 jest.mock('react-dom', () => ({
   createPortal: (node: any) => node
-}));
+}))
 
 interface State {
-  visible: boolean;
+  visible: boolean
 }
 
 class ModalTester extends React.Component<ModalProps, State> {
   constructor(props: ModalProps) {
-    super(props);
+    super(props)
     this.state = {
       visible: false
-    };
+    }
   }
 
-  container?: HTMLElement;
+  container?: HTMLElement
 
   componentWillMount(): void {
     this.setState({
       visible: true
-    });
+    })
   }
 
   saveContainer = (container: HTMLDivElement) => {
-    this.container = container;
-  };
+    this.container = container
+  }
 
   getContainer = () => {
-    return this.container;
-  };
+    return this.container
+  }
 
   render(): React.ReactNode {
-    const { visible } = this.state;
+    const { visible } = this.state
     return (
       <div>
         <div ref={this.saveContainer} />
         <Modal
+          ariaId="ModalTest"
           {...this.props}
           visible={visible}
           getContainer={this.getContainer}
@@ -47,18 +48,18 @@ class ModalTester extends React.Component<ModalProps, State> {
           Here is content of Modal
         </Modal>
       </div>
-    );
+    )
   }
 }
 
 describe('Modal', () => {
   it('renders without crashing', () => {
-    const component = renderer.create(<ModalTester />);
-    expect(component.toJSON()).toMatchSnapshot();
-  });
+    const component = renderer.create(<ModalTester />)
+    expect(component.toJSON()).toMatchSnapshot()
+  })
 
   it('renders without footer', () => {
-    const component = renderer.create(<ModalTester footer={null} />);
-    expect(component.toJSON()).toMatchSnapshot();
-  });
-});
+    const component = renderer.create(<ModalTester footer={null} />)
+    expect(component.toJSON()).toMatchSnapshot()
+  })
+})
