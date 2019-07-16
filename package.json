@@ -81,6 +81,8 @@
       "git add"
     ]
   },
+  "main": "dist/cobalt.esm.js",
+  "module": "dist/cobalt.esm.js",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",

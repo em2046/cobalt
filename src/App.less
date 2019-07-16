@@ -17,6 +17,16 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .cobalt-icon {
+    margin-right: 5px;
+  }
 }
 
 .App-link {
@@ -82,6 +92,11 @@
     margin-bottom: 10px;
   }
 
+  p {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
   h1,
   h2,
   h3,
@@ -119,6 +134,10 @@
   }
 }
 
+.Demo-link {
+  color: #30a0f0;
+}
+
 .Demo-icon-list {
   ul {
     margin: 0;
@@ -134,7 +153,7 @@
     flex-direction: column;
     width: 100px;
     height: 100px;
-    font-size: 40px;
+    font-size: 32px;
     transition: all 100ms;
 
     &:hover {
@@ -142,7 +161,7 @@
       background-color: #30a0f0;
     }
 
-    span {
+    .text {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -150,7 +169,7 @@
       line-height: 15px;
       text-align: center;
       padding-top: 10px;
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 }
